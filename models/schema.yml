@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Cleaned and deduplicated customer records."
+    columns:
+      - name: customer_id
+        description: "The primary key for this customer table"
+        tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: "Customer's first name, converted to uppercase."

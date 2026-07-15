@@ -1,0 +1,16 @@
+name: 'my_first_project'         # The name of your dbt project
+version: '1.0.0'
+config-version: 2
+
+profile: 'dbt_demo'  # Tells dbt which credentials to use in ~/.dbt/profiles.yml
+
+model-paths: ["models"]         # Where your SQL files live
+seed-paths: ["seeds"]           # Where static CSV files live
+
+# Configure how models are built in BigQuery (materializations)
+models:
+  my_first_project:
+    staging:
+      +materialized: view       # Make everything in the staging folder a View
+    marts:
+      +materialized: table      # Make everything in the marts folder a Table

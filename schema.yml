@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_customers           # Must match the exact name of your stg_customers.sql file
+    description: "Cleaned list of customers from our CRM"
+    columns:
+      - name: customer_id
+        description: "The primary key for this table"
+        tests:
+          - unique                # dbt will automatically test that IDs are unique!
+          - not_null              # dbt will test that there are no blank values!
+
+      - name: status
+        description: "The current account status of the customer"
+        tests:
+          - accepted_values:
+              values: ['active', 'inactive', 'pending']
